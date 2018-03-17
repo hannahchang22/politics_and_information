@@ -1,0 +1,28 @@
+---
+title: "KivaCrawler"
+author: "HannahChang"
+date: "2018年3月17日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## RCrawler
+
+```{r RCrawler}
+library(httr)
+
+url <- "http://api.kivaws.org/v1/lenders/jeremy/teams.json"
+res = GET(url)
+res_json = content(res)
+raw = (data.frame(do.call(rbind,res_json$teams)))
+```
+
+## Show Results
+
+```{r Table}
+library(knitr)
+kable(raw)
+```
