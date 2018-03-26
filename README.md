@@ -41,7 +41,7 @@ Week3（20180326）
 
 課程進度
 -------------
--   完成 week3_ask(Data Visualization)
+-   完成 week3_task(Data Visualization)
 
 
 
