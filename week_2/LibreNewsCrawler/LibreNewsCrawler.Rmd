@@ -1,0 +1,39 @@
+---
+title: "LibreNewsCrawler"
+author: "HannahChang"
+date: "2018年3月26日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Libre News Crawler
+
+```{r cars}
+library(rvest)
+
+title=read_html("http://sports.ltn.com.tw/baseball")   
+title=html_nodes(title,".boxTitle .listA .list_title")   
+title=html_text(title)
+title=iconv(title,"UTF-8")
+
+url=read_html("http://sports.ltn.com.tw/baseball")
+url=html_nodes(url,".boxTitle .listA a")  
+url=html_attr(url,"href")  
+
+artDate=read_html("http://sports.ltn.com.tw/baseball")
+artDate=html_nodes(artDate,".boxTitle .listA .date")
+artDate=html_text(artDate)
+
+df <- data.frame(title, url, artDate)
+```
+
+## Show Results
+
+```{r pressure, echo=FALSE}
+library(knitr)
+kable(df)
+```
+
